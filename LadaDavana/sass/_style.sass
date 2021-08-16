@@ -1,0 +1,842 @@
+*, *:before, *:after
+	box-sizing: border-box
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: $white
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	font-family: $font_default
+	overflow-x: hidden
+	color: $accent
+	background-color: #f4f4f4
+	
+
+img
+	max-width: 100%
+	height: auto
+	vertical-align: top
+
+.full-width
+	@include col
+	@include col-12
+
+.button
+	background-color: $accent
+	color: $white
+	text-align: center
+	font-size: 16px
+	padding: 13px 40px
+	font-weight: 600
+	outline: none
+	display: inline-block
+	border: none
+	border-radius: 100px
+	cursor: pointer
+	vertical-align: top
+	text-decoration: none 
+	line-height: 1
+	transition: all .3s ease
+	&:hover
+		opacity: 0.8
+	&_green 
+		background: linear-gradient(90deg, #A3D838 0%, #8FBA39 103.75%)
+		padding: 8px 0
+		width: 100%
+	&_transparent
+		background-color: $white 
+		color: $red 
+		border: 2px solid $red
+		margin-top: 30px
+		&:hover 
+			background-color: $red 
+			color: $white
+	&_red
+		background: linear-gradient(90deg, #FF675C 0%, #F04438 103.75%)
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea
+	background-color: $white
+	border: 1px solid #E7E7E7
+	border-radius: 100px
+	outline: none
+	color: #1E1F22
+	transition: border-color .2s ease
+	vertical-align: middle
+	&:focus, &:hover
+		border-color: $green
+
+a 
+	margin: 0
+	padding: 0
+	background: transparent
+	text-decoration: underline
+	outline: none
+	font-size: 14px
+	color: $blue
+	transition: all .3s ease
+	&:hover 
+		text-decoration: none
+
+p
+	color: $accent
+	margin: 0
+	padding: 0
+
+ul
+	list-style: none
+	padding: 0
+	margin: 0
+
+.vert-center
+	position: absolute
+	top: 50%
+	left: 0
+	right: 0
+	margin-left: auto
+	margin-right: auto
+	transform: translateY(-50%)
+
+// .flexed
+// 	display: flex
+// 	flex-wrap: wrap 
+// 	justify-content: space-between
+
+// Custom Sass / Remove before use
+
+.container
+	@include wrapper
+
+.row
+	@include row-flex
+
+////
+
+.header
+	box-shadow: 0px 5px 40px rgba(207, 215, 224, 0.6)
+	background: $white
+	&__mobile 
+		display: none
+
+.breadcrumbs
+	font-size: 12px
+	color: $blue
+	margin-bottom: 15px
+	a
+		color: #71767B
+		text-decoration: none
+		font-size: 12px
+		&:hover 
+			text-decoration: underline
+	span 
+		background: url(../img/icons/arrow_grey.svg) no-repeat
+		width: 6px
+		height: 10px
+		display: inline-block
+		vertical-align: middle
+		margin: 0 8px
+
+.pagination
+	&_margin
+		margin: 30px 0
+	ul 
+		display: flex
+		justify-content: center
+		align-items: center
+	li 
+		margin-right: 9px
+		.prev 
+			width: 15px
+			height: 15px
+			display: inline-block
+			background-image: url(../img/icons/arrow_black.svg)
+			background-repeat: no-repeat
+			background-size: contain
+			background-position: right
+			transform: rotate(180deg)
+			padding-right: 22px
+			margin-bottom: -2px
+			&_inactive
+				opacity: 0.5
+		.next
+			width: 15px
+			height: 14px
+			background-position: right
+			display: inline-block
+			background-image: url(../img/icons/arrow_black.svg)
+			background-repeat: no-repeat
+			padding-left: 22px
+
+.page_numbers
+	width: 24px
+	border-radius: 6px
+	font-size: 14px
+	padding: 0
+	margin: 0
+	display: inline-block 
+	text-align: center
+	height: 24px
+	font-weight: 700
+	line-height: 22px
+	color: rgba(0, 0, 0, 0.6)
+	cursor: pointer
+	text-decoration: none
+	&:hover 
+		color: $red
+	&-active
+		border: 1px solid $red 
+		color: $red
+		&:hover 
+			opacity: 0.8
+
+.row
+	&_header
+		min-height: 80px
+		align-items: center
+		justify-content: space-between
+	&_center
+		justify-content: space-between
+		align-items: center
+	&_white 
+		background-color: $white
+
+.logo
+	margin-left: 15px
+	width: 231px
+	height: 53px
+	display: inline-block
+	background-image: url(../img/logo.svg)
+	background-repeat: no-repeat
+	background-position: center
+	&_footer
+		background-image: url(../img/logo_footer.svg)
+.nav
+	@include col
+	&__list 
+		display: flex
+		flex-wrap: wrap
+	&__item 
+		font-weight: 600
+		line-height: 22px
+		position: relative
+		padding: 30px 15px
+		&:last-child
+			padding-right: 0
+	&__link 
+		color: $accent
+		text-decoration: none
+		position: relative
+		font-size: 16px
+		&:hover 
+			color: $red
+			transition: all .3s ease
+			&:after 
+				width: 100%
+		&:after
+			display: block 
+			content: ""
+			background: $red
+			height: 2px
+			width: 0
+			left: 50%
+			position: absolute 	
+			transition: width .3s ease-in-out
+			transform: translateX(-50%)
+			&:hover 
+				width: 100%
+		svg
+			vertical-align: middle
+		&_footer 
+			color: $white
+			margin-right: 60px
+			&:hover 
+				color: $green
+			&:after 
+				background: $green
+	li 
+		&:hover
+			> ul
+				display: block
+
+.submenu	
+	display: none
+	position: absolute
+	top: 82px
+	line-height: 1
+	left: -50px
+	width: 220px
+	min-height: 360px
+	height: auto
+	background-color: $white 
+	z-index: 1
+	padding: 0
+	box-shadow: 0px 5px 20px rgba(207, 215, 224, 0.4)
+	border-right: 1px solid rgba(207, 215, 224, 0.6)
+	a 
+		font-size: 14px
+		color: $accent
+		font-weight: 400
+		display: block
+		text-decoration: none
+		padding: 15px 25px 0 15px
+		line-height: 1
+		&:hover 
+			color: $red
+			transition: color .3s ease
+	&__parent
+		&::after
+			content: ""
+			width: 13px
+			height: 7px
+			right: 6px
+			top: 20px
+			position: absolute
+			display: inline-block
+			background: url(../img/icons/arrow_red.svg) no-repeat
+			transform: rotate(270deg)
+	&__middle
+		display: none
+		position: absolute
+		width: 330px
+		top: 0
+		left: 220px
+		min-height: 360px
+		height: auto
+		background-color: $white
+		box-shadow: 0px 5px 9px rgba(207, 215, 224, 0.4)
+		a 
+			padding: 15px 25px 0 30px
+			
+
+.aside 
+	@include col 
+	width: calc( 28% - 30px)
+	background-color: $white
+
+.widget
+	padding: 20px 15px 25px 20px
+	background-color: $white
+	position: relative
+	&::before
+		content: ""
+		max-width: 90%
+		width: 100%
+		left: 0
+		right: 0
+		margin: auto
+		height: 1px
+		background-color: rgba(207, 215, 224, 0.6)
+		display: inline-block
+		position: absolute
+		top: 0
+	&_bg 
+		background-color: $blue_light
+	&__title
+		font-size: 14px
+		font-weight: 700
+		margin-bottom: 15px
+		&_icon
+			display: inline-block 
+			padding-left: 30px
+		&_user
+			background: url(../img/icons/user.svg) no-repeat left
+		&_balloons
+			background: url(../img/icons/balloons.svg) no-repeat left
+		&_present
+			background: url(../img/icons/present.svg) no-repeat left
+		&_bulb
+			background: url(../img/icons/bulb.svg) no-repeat left
+
+.search
+	&__form 
+		position: relative
+		display: inline-block
+		width: 100%
+		max-width: 500px 
+	&__desc 
+		font-size: 11px
+		line-height: 15px
+		font-weight: normal
+		color: #71767B
+	&__input 
+			width: 100%
+			font-size: 14px
+			margin-bottom: 7px
+			padding: 10px 40px 10px 15px
+			&::placeholder 
+				color: #9e9e9e
+			&-big 
+				padding: 15px 40px 15px 15px
+	&__submit
+		position: absolute
+		background: url(../img/icons/search.svg) no-repeat
+		width: 14px
+		height: 20px
+		border: none
+		outline: 0
+		right: 16px
+		top: 50%
+		transform: translate3d(0,-50%,0)
+		cursor: pointer
+		&:hover 
+			opacity: 0.8
+
+.feast
+	display: flex
+	margin-bottom: 13px
+	&__items 
+		line-height: 1
+		a 
+			color: $accent
+			text-decoration: underline
+			line-height: 22px
+			padding-right: 10px
+			&:hover 
+				color: $blue
+				transition: color .3s ease
+				text-decoration: none
+			&_holidays 
+				max-width: 200px
+	&__date 
+		margin-right: 15px
+		a 
+			color: $red
+			display: block
+			font-weight: 700
+			text-decoration: none
+			line-height: 19px
+			background: #e6edf5
+			border-radius: 100px
+			padding: 8px 19px
+			&:hover 
+				box-shadow: 0px 0px 10px rgba(207, 215, 224, 0.9)
+			&_holidays
+				background: $white
+		
+.tags
+	margin: 0
+	display: flex
+	flex-wrap: wrap
+	&_gratters
+		margin-bottom: 25px
+	&__item 
+		margin-bottom: 15px
+		margin-right: 10px
+		color: $accent
+		font-weight: 400
+		padding: 8px 15px
+		display: block
+		text-decoration: none
+		line-height: 19px
+		background: $blue_light
+		border-radius: 100px
+		&:hover 
+			box-shadow: 0px 0px 10px rgba(207, 215, 224, 0.9)
+		&_active
+			background-color: $white
+			border: 1px solid $red
+			color: $red
+			font-weight: 600
+
+.filter
+	&_flex 
+		display: flex 
+		justify-content: center
+		flex-wrap: wrap
+	&__button 
+		&-half 
+			@extend .filter__select-half
+	&__select
+		width: 100%
+		border: 1px solid #E7E7E7
+		border-radius: 100px
+		padding: 10px 0 10px 15px
+		line-height: 28px
+		margin-bottom: 20px
+		appearance: none
+		font-size: 14px
+		line-height: 1
+		outline: none
+		background: url(../img/icons/arrow_select.svg) no-repeat 95% 50%,$white
+		cursor: pointer
+		transition: border .3s ease
+		&:hover 
+			border: 1px solid $green 
+			transition: all .3s ease
+		&-half 
+			@include col 
+			@include col-3
+			@include col-md-4
+			@include col-xs-12
+ 
+			
+
+			
+.banner
+	img 
+		padding-bottom: 30px
+		&:last-child
+			padding-bottom: 0
+
+.text-center
+	text-align: center
+
+.title 
+	font-size: 24px
+	font-weight: 600
+	line-height: 29px
+	margin-bottom: 25px
+	font-family: $font_second
+	&_nopadding
+		padding-top: 0
+	
+.subtitle
+	font-size: 20px
+	line-height: 1
+	margin-bottom: 15px
+	font-weight: 600
+	font-family: $font_second
+	&_padding 
+		margin-bottom: 30px
+		padding-top: 20px
+
+.main 
+	&_col
+		@include col 
+		width: calc( 72% - 30px )
+		background-color: $white
+		border-top-right-radius: 6px
+		border-top-left-radius: 6px
+
+.section
+	&_indent
+		margin-top: 10px
+	&_bg 
+		background: url(../img/presents.jpg) no-repeat center/cover
+		min-height: 510px
+	&_bgi 
+		background: url(../img/calendar.jpg) no-repeat center/cover
+		min-height: 510px
+	&_padding 
+		padding: 60px 25px
+		&-small
+			padding: 30px 25px
+		&-middle
+			padding: 30px 25px
+	&_bottom
+		padding: 50px 25px
+	&__text 
+		&-small
+			padding-bottom: 65px
+			max-width: 865px
+			width: 100%
+			display: inline-block
+	&_top 
+		margin-top: -10px
+	&__col
+		@include col
+		&_big
+			width: calc( 60% - 30px )
+		&_small 
+			width: calc( 40% - 30px )
+			text-align: center
+		&_padding
+			padding-left: 55px
+	&__block 
+		margin-top: 40px
+	&__text 
+		font-size: 14px
+		line-height: 28px
+		color: rgba(0, 0, 0, 0.6)
+		p 
+			font-size: 16px
+			line-height: 28px
+			color: rgba(0, 0, 0, 0.6)
+			padding-bottom: 25px
+		&_white 
+			color: $white
+	&__image 
+		padding-top: 20px
+	&_card 
+		text-align: center
+		padding-bottom: 40px
+	&_violet
+		background-color: $violet
+		color: $white
+		a 
+			color: $white
+	&_blue
+		background-color: $blue_light
+	&_white 
+		background-color: $white
+	&__link 
+		margin: 30px 0
+		a 
+			padding-right: 10px
+			&:last-child
+				padding-right: 0
+	&__href
+		@include col 
+		@include col-6
+		padding-bottom: 25px
+		line-height: 19px
+		&:last-child
+			padding-bottom: 0
+	&__item 
+		@include col
+		@include col-6
+		text-align: left
+		margin-bottom: 40px
+		line-height: 1
+		a 
+			line-height: 22px
+			padding-right: 13px
+		p 
+			font-size: 16px
+			line-height: 22px
+			color: rgba(0, 0, 0, 0.6)
+			padding-bottom: 30px
+		&_width 
+			@include col-12
+		
+
+.card
+	min-height: 420px
+	margin-left: 10px
+	margin-right: 10px
+	width: calc(33.333333333333336% - 20px)
+	@include col-md-4
+	@include col-sm-6
+	@include col-xs-12
+	text-align: left
+	background: $white
+	box-shadow: 0px 5px 20px rgba(207, 215, 224, 0.4)
+	border-radius: 10px
+	margin-bottom: 20px
+	text-decoration: none
+	transition: all .3s ease
+	&:hover 
+		box-shadow: 0px 5px 20px rgba(207, 215, 224, 0.9)
+		img 
+			opacity: 0.8
+		.card__link 
+			text-decoration: none
+	&__title 
+		@extend .title
+		font-size: 16px
+		line-height: 22px
+		padding: 0
+		margin: 0
+		padding: 20px 15px
+		display: block
+		color: $accent
+		min-height: 90px
+		display: flex
+		align-items: center
+	&__text 
+		font-size: 14px
+		line-height: 22px
+		display: block
+		color: $accent
+		padding-bottom: 10px
+	&__link 
+		text-decoration: underline
+	&__body 
+		padding: 21px 16px
+		display: block
+	img 
+		width: 100%
+
+.footer
+	background-color: $violet
+	color: $white
+	padding: 10px 0
+	&__copyright
+		@include col
+		font-size: 14px
+		color: #EFF3F8
+		font-weight: 600
+
+.month 
+	@extend .widget__title
+	background: url(../img/icons/calendar.svg) no-repeat left top
+	margin-bottom: 30px
+	padding-left: 25px
+	display: inline-block
+	line-height: 25px
+	span 
+		font-weight: 400
+		
+.half 
+	@include col
+	@include col-6
+	@include col-xs-12
+	p 
+		padding-bottom: 10px
+		max-width: 250px
+		width: 100%
+
+.poems
+	&_col
+		columns: 2
+		max-width: 550px
+	p 
+		padding-bottom: 10px
+		max-width: 250px
+		width: 100%
+
+
+.calendar
+	&__table 
+		width: 100%
+		height: 100%
+		border-spacing: 0
+		border-collapse: collapse
+		th 
+			padding: 25px 50px
+			font-size: 14px
+			line-height: 19px
+			font-weight: 700
+			height: 72px
+			border: 1px solid #E7E7E7 
+		td
+			padding: 0
+			height: 130px
+			border: 1px solid #E7E7E7 
+		a 
+			display: block
+			width: 100%
+			height: 100%
+			padding: 14px 
+			position: relative
+			color: $grey 
+			text-decoration: none
+			&:hover 
+				box-shadow: 0px 0px 1px 1px rgba(143,186,57,1)
+	&__date
+		display: block
+		float: left
+		width: 40px
+		text-align: center
+	&__names
+		margin-left: 40px
+		font-size: 14px
+		line-height: 19px
+		text-align: right
+	&__name 
+		display: block
+	&__sunday
+		.calendar__date 
+			color: $red
+	&__selected
+		a 
+			box-shadow: 0px 0px 1px 1px rgba(143,186,57,1)
+			background: linear-gradient(0deg, #8FBA39 0%, #A3D838 146.07%)
+			color: $white
+			font-weight: 700
+	&__header
+		margin-bottom: 20px
+		position: relative
+		text-align: center
+	&__date 
+		font-size: 14px
+		margin-top: -5px
+	&__menu 
+		text-align: center
+		position: relative
+		display: inline-block
+		line-height: 1
+	&__dropdown 
+		display: none
+		position: absolute
+		left: -45px
+		right: 0 
+		padding: 10px 0
+		top: 30px
+		margin: auto
+		background-color: $white 
+		min-width: 150px
+		z-index: 1
+		border: 1px solid rgba(0, 0, 0, .15)
+		border-radius: 4px
+		box-shadow: 0 6px 12px rgba(0, 0, 0, .175)
+		li 
+			padding: 5px 0
+		a 
+			color: $accent
+			text-decoration: none 
+			font-weight: 600 
+			font-size: 14px
+			display: block
+			&:hover 
+				color: $green
+	&__title 
+		font-weight: 600
+		font-size: 20px
+		text-decoration: none 
+		color: $accent
+		font-family: $font_second
+		position: relative
+		&:hover,&:focus
+			color: $green
+		&::after
+			content: ""
+			position: absolute
+			width: 10px
+			top: 5px 
+			transition: transform .5s ease
+			right: -20px
+			transform: rotate(90deg)
+			height: 15px
+			display: inline-block 
+			background: url(../img/icons/arrow_black.svg) no-repeat
+	&__pref 
+		position: absolute
+		background: url(../img/icons/arrow_black.svg) no-repeat
+		transform: rotate(180deg)
+		width: 15px
+		height: 15px
+		left: 0
+		&:hover
+			opacity: 0.6
+	&__next
+		position: absolute
+		background: url(../img/icons/arrow_black.svg) no-repeat
+		width: 15px
+		height: 15px
+		right: 0
+		&:hover
+			opacity: 0.6
+	&__menu_open
+		.calendar__title
+			color: #8fba39
+			&::after
+				transform: rotate(-90deg)
+		.calendar__dropdown
+			display: block
+
+.hamburger-inner
+	background-color: $red !important
+	width: 35px
+	&::before, &::after
+		background-color: $red !important
+		width: 35px
+.hamburger
+	padding: 0
+	padding-top: 7px
+	padding-right: 15px
+	&:focus, &:active
+		outline: none
+		border: none
+		background: transparent
+	.is-active
+		transform: translate3D(-100%,0,0)
